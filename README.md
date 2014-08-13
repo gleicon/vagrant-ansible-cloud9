@@ -12,8 +12,10 @@ Vagrant layout and organization inspired by https://github.com/DandyDev/graphite
 # Usage
 ## Locally with Vagrant
 
+```
 $ vagrant up 
-$ open http://192.168.33.21 on your browser
+$ open http://192.168.33.21 # on your browser
+```
 
 ## Remotely with your cloud of preference
     
