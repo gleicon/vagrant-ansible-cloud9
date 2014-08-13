@@ -1,0 +1,16 @@
+- hosts: all
+  sudo: True
+  vars:
+    cloud9:
+      version: master
+      host: 0.0.0.0
+      server: cloud9.local
+      webuser: programmer
+      webpassword: change_me_from_cucamonga
+  roles:
+    - common
+    - python
+    - supervisor
+    - nginx
+    - nodejs
+    - cloud9

@@ -1,0 +1,6 @@
+- name: install supervisor debian/ubuntu
+  apt: pkg=supervisor state=latest
+
+- name: Enable and run service
+  service: name=supervisor state=started enabled=yes
+

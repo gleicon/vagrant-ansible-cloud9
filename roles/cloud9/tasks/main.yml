@@ -1,0 +1,24 @@
+- name: opt directory must exists
+  file:
+    path: /opt/cloud9
+    state: directory
+
+- name: fetch cloud9
+  git: repo=https://github.com/ajaxorg/cloud9.git dest=/opt/cloud9
+
+- name: install cloud9
+  command: npm install chdir=/opt/cloud9
+
+- name: create cloud9 supervisord config
+  template: src=supervisor-cloud9.conf.j2 dest=/etc/supervisor/conf.d/cloud9.conf
+
+- name: restart supervisord
+  shell: supervisorctl reload
+
+- name: copy nginx configuration for cloud9
+  template: src=nginx-cloud9.conf.j2 dest=/etc/nginx/sites-available/cloud9.conf
+
+- name: enable site
+  file: src=/etc/nginx/sites-available/cloud9.conf dest=/etc/nginx/sites-enabled/cloud9.conf state=link
+  notify:
+    - restart nginx

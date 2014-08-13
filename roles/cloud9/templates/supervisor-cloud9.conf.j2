@@ -1,0 +1,11 @@
+[program:cloud9]
+directory=/opt/cloud9
+command=/bin/bash /opt/cloud9/bin/cloud9.sh --username {{ cloud9.webuser }} --password {{ cloud9.webpassword }}
+process_name=%(program_name)s
+autostart=true
+autorestart=true
+stopsignal=QUIT
+redirect_stderr=true
+stdout_logfile=/var/log/cloud9.log
+stdout_logfile_maxbytes=200MB
+ 
